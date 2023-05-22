@@ -15,7 +15,7 @@ function App () {
         <Route path="/contact" element={ <h1>Contact</h1> } />
         <Route path="/login" element={ <Login /> } />
         <Route path="/register" element={ <Register /> } />
-        <Route path="/singlePost" element={ <SinglePost /> } />
+        <Route path="/post/:id" element={ <SinglePost /> } />
         <Route path="/all" element={ <AllPosts /> } />
         <Route path="*" element={ <PageNotFound /> } />
       </Routes>

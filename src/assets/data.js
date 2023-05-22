@@ -53,7 +53,7 @@ export const blogposts = [
 		content: "Google has historically been terrible at maintaining confidentiality and secrecy around its Pixel devices. It’s become a given that we’ll see prototype hardware several months ahead of the company’s annual October hardware event. This has led Google to tease upcoming flagships well in advance. But with the Pixel 7A, Pixel Fold, and Pixel Tablet all taking center stage at last week’s I/O keynote, we didn’t get an early glimpse of the Pixel 8 lineup.",
 		date: "20 May",
 		tags: [ "Google", "Pixel" ],
-		_author: "Sachin4219"
+		_author: "Sachin4219",
 	},
 	{
 		title: "Pixel 8 Pro leak is seemingly from Google itself",
@@ -61,7 +61,7 @@ export const blogposts = [
 		content: "Google has historically been terrible at maintaining confidentiality and secrecy around its Pixel devices. It’s become a given that we’ll see prototype hardware several months ahead of the company’s annual October hardware event. This has led Google to tease upcoming flagships well in advance. But with the Pixel 7A, Pixel Fold, and Pixel Tablet all taking center stage at last week’s I/O keynote, we didn’t get an early glimpse of the Pixel 8 lineup.",
 		date: "20 May",
 		tags: [ "Google", "Pixel" ],
-		_author: "Sachin4219"
+		_author: "Sachin4219",
 	},
 	{
 		title: "Pixel 8 Pro leak is seemingly from Google itself",
@@ -69,7 +69,7 @@ export const blogposts = [
 		content: "Google has historically been terrible at maintaining confidentiality and secrecy around its Pixel devices. It’s become a given that we’ll see prototype hardware several months ahead of the company’s annual October hardware event. This has led Google to tease upcoming flagships well in advance. But with the Pixel 7A, Pixel Fold, and Pixel Tablet all taking center stage at last week’s I/O keynote, we didn’t get an early glimpse of the Pixel 8 lineup.",
 		date: "20 May",
 		tags: [ "Google", "Pixel" ],
-		_author: "Sachin4219"
+		_author: "Sachin4219",
 	},
 	{
 		title: "Pixel 8 Pro leak is seemingly from Google itself",
@@ -77,7 +77,7 @@ export const blogposts = [
 		content: "Google has historically been terrible at maintaining confidentiality and secrecy around its Pixel devices. It’s become a given that we’ll see prototype hardware several months ahead of the company’s annual October hardware event. This has led Google to tease upcoming flagships well in advance. But with the Pixel 7A, Pixel Fold, and Pixel Tablet all taking center stage at last week’s I/O keynote, we didn’t get an early glimpse of the Pixel 8 lineup.",
 		date: "20 May",
 		tags: [ "Google", "Pixel" ],
-		_author: "Sachin4219"
+		_author: "Sachin4219",
 	},
 	{
 		title: "Pixel 8 Pro leak is seemingly from Google itself",
@@ -85,7 +85,7 @@ export const blogposts = [
 		content: "Google has historically been terrible at maintaining confidentiality and secrecy around its Pixel devices. It’s become a given that we’ll see prototype hardware several months ahead of the company’s annual October hardware event. This has led Google to tease upcoming flagships well in advance. But with the Pixel 7A, Pixel Fold, and Pixel Tablet all taking center stage at last week’s I/O keynote, we didn’t get an early glimpse of the Pixel 8 lineup.",
 		date: "20 May",
 		tags: [ "Google", "Pixel" ],
-		_author: "Sachin4219"
+		_author: "Sachin4219",
 	},
 	{
 		title: "Pixel 8 Pro leak is seemingly from Google itself",
@@ -93,7 +93,7 @@ export const blogposts = [
 		content: "Google has historically been terrible at maintaining confidentiality and secrecy around its Pixel devices. It’s become a given that we’ll see prototype hardware several months ahead of the company’s annual October hardware event. This has led Google to tease upcoming flagships well in advance. But with the Pixel 7A, Pixel Fold, and Pixel Tablet all taking center stage at last week’s I/O keynote, we didn’t get an early glimpse of the Pixel 8 lineup.",
 		date: "20 May",
 		tags: [ "Google", "Pixel" ],
-		_author: "Sachin4219"
+		_author: "Sachin4219",
 	}
 ]
 

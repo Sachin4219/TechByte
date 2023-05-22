@@ -1,11 +1,15 @@
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
+import { useParams } from "react-router-dom";
 
 function SinglePost () {
+    let { id } = useParams();
     return (
         <div className="w-[100%] h-auto min-h-[100vh] flex flex-col items-center">
             <Navbar />
-            <Post />
+            <Post postid={ id } />
+            <Footer />
         </div>
     );
 }

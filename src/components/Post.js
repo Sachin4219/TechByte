@@ -1,11 +1,10 @@
 import React from 'react';
 import { AiFillCaretRight, AiFillInstagram, AiFillFacebook, AiOutlineTwitter } from 'react-icons/ai';
 import { blogposts } from '../assets/data';
+import axios from 'axios';
 
-
-function Post () {
-    const postDetails = blogposts[ 0 ];
-
+function Post ( props ) {
+    let postDetails = blogposts[ props.postid ];
     return (
         <div className='w-[100%] pt-16 flex justify-center'>
             <div className="box-border w-[70%] px-[5%] flex justify-between max-[1000px]:items-center max-[1000px]:w-[90%] max-[1000px]:flex-col">
