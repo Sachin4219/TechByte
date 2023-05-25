@@ -1,7 +1,7 @@
 import him3 from "./him3.jpg";
 import him4 from "./him4.jpg";
 
-export const base_url = "http://localhost:4000/";
+export const base_url = "https://techbytebackend.onrender.com/";
 
 export const headerdata = {
   images: [

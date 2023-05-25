@@ -23,7 +23,7 @@ function Navbar(props) {
       <div className="w-fit px-4 text-2xl font-bold font-sans max-[800px]:w-[100%] max-[800px]:flex max-[800px]:justify-between ">
         <Link to="/">TechByte</Link>
         <div
-          className="min-[800px]:hidden w-fit text-xl font-bold px-2 py-2 rounded-md hover:scale-95 active:scale-90"
+          className="min-[800px]:hidden w-fit text-xl font-bold px-2 py-2 rounded-t-md hover:scale-95 active:scale-90"
           onClick={() => setIsopen(!isopen)}
         >
           <AiOutlineMenu />
@@ -33,7 +33,7 @@ function Navbar(props) {
         className={`w-fit px-4 text-lg font-sans flex flex-row gap-5 max-[800px]:hidden tracking-wider`}
       >
         <Link
-          className={`hover:scale-95 active:scale:90 px-2 rounded-md flex hover:bg-sky-100 ${
+          className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex hover:bg-sky-100 ${
             props.at === "home" ? "border-b-2 border-red-200" : ""
           }`}
           to="/"
@@ -41,7 +41,7 @@ function Navbar(props) {
           Home
         </Link>
         <Link
-          className={`hover:scale-95 active:scale:90 px-2 rounded-md flex hover:bg-sky-100 ${
+          className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex hover:bg-sky-100 ${
             props.at === "all" ? "border-b-2 border-red-200" : ""
           }`}
           to="/all"
@@ -49,7 +49,7 @@ function Navbar(props) {
           Posts
         </Link>
         <Link
-          className={`hover:scale-95 active:scale:90 px-2 rounded-md flex hover:bg-sky-100 ${
+          className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex hover:bg-sky-100 ${
             props.at === "newpost" ? "border-b-2 border-red-200" : ""
           }`}
           to="/post/new"
@@ -60,7 +60,7 @@ function Navbar(props) {
         {isAuth === false ? (
           <div className="w-fit px-5 text-xl flex flex-row gap-5 tracking-wide font-sans">
             <Link
-              className={`hover:scale-95 active:scale:90 px-2 rounded-md flex hover:bg-sky-100 ${
+              className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex hover:bg-sky-100 ${
                 props.at === "login" ? "border-b-2 border-red-200" : ""
               }`}
               to="/login"
@@ -68,7 +68,7 @@ function Navbar(props) {
               Login
             </Link>
             <Link
-              className={`hover:scale-95 active:scale:90 px-2 rounded-md flex hover:bg-sky-100 ${
+              className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex hover:bg-sky-100 ${
                 props.at === "register" ? "border-b-2 border-red-200" : ""
               }`}
               to="/register"
@@ -80,7 +80,7 @@ function Navbar(props) {
           <div className="w-fit px-5 text-xl flex flex-row">
             <Link
               to="/posts/my"
-              className={`hover:scale-95 active:scale:90 px-2 rounded-md flex hover:bg-sky-100 ${
+              className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex hover:bg-sky-100 ${
                 props.at === "myposts" ? "border-b-2 border-red-200" : ""
               }`}
             >
@@ -89,7 +89,7 @@ function Navbar(props) {
             </Link>
             <a
               href="/"
-              className="hover:bg-sky-100 rounded-md px-2 hover:scale-95 active:scale-90"
+              className="hover:bg-sky-100 rounded-t-md px-2 hover:scale-95 active:scale-90"
               onClick={() => localStorage.clear()}
             >
               Logout
@@ -102,7 +102,7 @@ function Navbar(props) {
           className={` pt-2 px-4 text-xl font-sans flex gap-5 w-[100%] flex-col min-[800px]:hidden`}
         >
           <Link
-            className={`hover:scale-95 active:scale:90 px-2 rounded-md flex hover:bg-sky-100 ${
+            className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex hover:bg-sky-100 ${
               props.at === "home" ? "border-b-2 border-red-200" : ""
             }`}
             to="/"
@@ -110,7 +110,7 @@ function Navbar(props) {
             Home
           </Link>
           <Link
-            className={`hover:scale-95 active:scale:90 px-2 rounded-md flex hover:bg-sky-100 ${
+            className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex hover:bg-sky-100 ${
               props.at === "all" ? "border-b-2 border-red-200" : ""
             }`}
             to="/all"
@@ -118,7 +118,7 @@ function Navbar(props) {
             Posts
           </Link>
           <Link
-            className={`hover:scale-95 active:scale:90 px-2 rounded-md flex hover:bg-sky-100 ${
+            className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex hover:bg-sky-100 ${
               props.at === "newpost" ? "border-b-2 border-red-200" : ""
             }`}
             to="/post/new"
@@ -129,7 +129,7 @@ function Navbar(props) {
           {isAuth === false ? (
             <div className="w-[100%] text-xl flex flex-col gap-5 tracking-wide font-sans">
               <Link
-                className={`hover:scale-95 active:scale:90 px-2 rounded-md flex hover:bg-sky-100 ${
+                className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex hover:bg-sky-100 ${
                   props.at === "login" ? "border-b-2 border-red-200" : ""
                 }`}
                 to="/login"
@@ -137,7 +137,7 @@ function Navbar(props) {
                 Login
               </Link>
               <Link
-                className={`hover:scale-95 active:scale:90 px-2 rounded-md flex hover:bg-sky-100 ${
+                className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex hover:bg-sky-100 ${
                   props.at === "register" ? "border-b-2 border-red-200" : ""
                 }`}
                 to="/register"
@@ -149,7 +149,7 @@ function Navbar(props) {
             <div className="w-[100%] text-xl flex flex-col gap-5 tracking-wide font-sans">
               <Link
                 to="/posts/my"
-                className={`hover:scale-95 active:scale:90 px-2 rounded-md flex gap-5 hover:bg-sky-100 ${
+                className={`hover:scale-95 active:scale:90 px-2 rounded-t-md flex gap-5 hover:bg-sky-100 ${
                   props.at === "myposts" ? "border-b-2 border-red-200" : ""
                 }`}
               >
@@ -158,7 +158,7 @@ function Navbar(props) {
               </Link>
               <a
                 href="/"
-                className="hover:bg-sky-100 rounded-md px-2 hover:scale-95 active:scale-90"
+                className="hover:bg-sky-100 rounded-t-md px-2 hover:scale-95 active:scale-90"
                 onClick={() => localStorage.clear()}
               >
                 Logout
