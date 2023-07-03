@@ -21,6 +21,22 @@
   gap: 20px;
 }
 
+.failureMessage {
+  width: 60%;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  height: fit-content;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: rgba(255, 100, 100, 0.7);
+  color: white;
+  visibility: hidden;
+}
+
 .heading {
   width: fit-content;
   display: flex;

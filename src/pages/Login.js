@@ -11,6 +11,14 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  function fireError() {
+    const failMessage = document.getElementById("loginfailure");
+    failMessage.style.visibility = "visible";
+    setTimeout(() => {
+      failMessage.style.visibility = "hidden";
+    }, 3000);
+  }
+
   const submitHandler = async (e) => {
     e.preventDefault();
     const url = base_url + "login";
@@ -27,16 +35,20 @@ function Login() {
         localStorage.setItem("email", response.data.response.email);
         window.location.replace("/");
       } else {
-        window.location.reload(false);
+        fireError();
       }
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      fireError();
+      console.log(err);
     }
   };
 
   return (
     <div className={styles.body}>
       <Navbar />
+      <div id="loginfailure" className={styles.failureMessage}>
+        Invalid Credentials
+      </div>
       <div className={styles.heading}>
         <img src={transparent} alt="website logo"></img>
         <h1>Login to Everypost</h1>
@@ -46,7 +58,7 @@ function Login() {
           <div className={styles.formElement}>
             <label htmlFor="email">Email</label>
             <input
-              type="text"
+              type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

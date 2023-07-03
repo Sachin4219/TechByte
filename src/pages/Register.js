@@ -18,9 +18,23 @@ function Register() {
   const [password, setPassword] = useState("");
   const [postImage, setPostImage] = useState("");
   const [bio, setBio] = useState("");
+  const [error, setError] = useState("");
+
+  function isValidEmail(email) {
+    console.log(/\S+@\S+\.\S+/.test(email));
+  }
+
+  function fireError() {
+    const failMessage = document.getElementById("registerfailure");
+    failMessage.style.visibility = "visible";
+    setTimeout(() => {
+      failMessage.style.visibility = "hidden";
+    }, 3000);
+  }
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    isValidEmail(email);
     const url = base_url + "register";
     try {
       const response = await axios.post(url, {
@@ -37,12 +51,13 @@ function Register() {
         localStorage.setItem("photo", response.data.response.photo);
         localStorage.setItem("name", response.data.response.name);
         localStorage.setItem("email", response.data.response.email);
-        window.location.replace("/");
       } else {
-        window.location.reload(false);
+        setError(response.data.msg);
+        fireError();
       }
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      setError(err.response.data.msg);
+      fireError();
     }
   };
 
@@ -73,6 +88,9 @@ function Register() {
   return (
     <div className={styles.body}>
       <Navbar />
+      <div className={styles.failureMessage} id="registerfailure">
+        {error}
+      </div>
       <div className={styles.heading}>
         <img src={transparent} alt="website logo"></img>
         <h1>Register on Everypost</h1>
@@ -139,7 +157,7 @@ function Register() {
           <div className={styles.formElement}>
             <label htmlFor="email">Email</label>
             <input
-              type="text"
+              type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -156,7 +174,7 @@ function Register() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit">Log in</button>
+          <button type="submit">Sign up</button>
         </form>
         <div className={styles.links}>
           <Link>Forgot your password ?</Link>
