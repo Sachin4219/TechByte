@@ -16,7 +16,7 @@ function Login() {
     failMessage.style.visibility = "visible";
     setTimeout(() => {
       failMessage.style.visibility = "hidden";
-    }, 3000);
+    }, 2000);
   }
 
   const submitHandler = async (e) => {
@@ -39,15 +39,14 @@ function Login() {
       }
     } catch (err) {
       fireError();
-      console.log(err);
     }
   };
 
   return (
     <div className={styles.body}>
       <Navbar />
-      <div id="loginfailure" className={styles.failureMessage}>
-        Invalid Credentials
+      <div id="loginfailure" className={styles.messages}>
+        <div className={styles.errorMessage}>Invalid Credentials</div>
       </div>
       <div className={styles.heading}>
         <img src={transparent} alt="website logo"></img>

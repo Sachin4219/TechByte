@@ -18,23 +18,22 @@ function Register() {
   const [password, setPassword] = useState("");
   const [postImage, setPostImage] = useState("");
   const [bio, setBio] = useState("");
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
-  function isValidEmail(email) {
-    console.log(/\S+@\S+\.\S+/.test(email));
-  }
+  // function isValidEmail(email) {
+  //   console.log(/\S+@\S+\.\S+/.test(email));
+  // }
 
   function fireError() {
-    const failMessage = document.getElementById("registerfailure");
+    const failMessage = document.getElementById("messages");
     failMessage.style.visibility = "visible";
     setTimeout(() => {
       failMessage.style.visibility = "hidden";
-    }, 3000);
+    }, 2000);
   }
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    isValidEmail(email);
     const url = base_url + "register";
     try {
       const response = await axios.post(url, {
@@ -51,12 +50,15 @@ function Register() {
         localStorage.setItem("photo", response.data.response.photo);
         localStorage.setItem("name", response.data.response.name);
         localStorage.setItem("email", response.data.response.email);
+        setMessage("success");
+        fireError();
+        window.location = "/all";
       } else {
-        setError(response.data.msg);
+        setMessage(response.data.msg);
         fireError();
       }
     } catch (err) {
-      setError(err.response.data.msg);
+      setMessage(err.response.data.msg);
       fireError();
     }
   };
@@ -82,14 +84,17 @@ function Register() {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
     setPostImage(base64);
-    console.log(base64);
   };
 
   return (
     <div className={styles.body}>
       <Navbar />
-      <div className={styles.failureMessage} id="registerfailure">
-        {error}
+      <div className={styles.message} id="messages">
+        {message === "success" ? (
+          <div className={styles.successMessage}>Registered Successfully</div>
+        ) : (
+          <div className={styles.errorMessage}>{message}</div>
+        )}
       </div>
       <div className={styles.heading}>
         <img src={transparent} alt="website logo"></img>

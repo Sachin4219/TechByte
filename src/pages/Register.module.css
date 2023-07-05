@@ -21,20 +21,27 @@
   gap: 20px;
 }
 
-.failureMessage {
-  width: 60%;
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  right: 50%;
-  transform: translate(-50%, -50%);
-  height: fit-content;
-  padding: 8px 12px;
+.message {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  backdrop-filter: blur(5px);
   border-radius: 5px;
-  text-align: center;
-  background-color: rgba(255, 100, 100, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
+  font-size: 48px;
   visibility: hidden;
+}
+.errorMessage {
+  padding: 8px 12px;
+  background-color: rgba(250, 50, 0, 0.5);
+}
+.successMessage {
+  padding: 8px 12px;
+  background-color: rgba(0, 250, 50, 0.5);
 }
 
 .heading {
