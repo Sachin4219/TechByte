@@ -43,14 +43,13 @@ function Login() {
   };
 
   return (
-    <div className={styles.body}>
-      <Navbar />
+    <>
       <div id="loginfailure" className={styles.messages}>
         <div className={styles.errorMessage}>Invalid Credentials</div>
       </div>
       <div className={styles.heading}>
         <img src={transparent} alt="website logo"></img>
-        <h1>Login to Everypost</h1>
+        <h1>Login to TechByte</h1>
       </div>
       <div className={styles.container}>
         <form className={styles.form} onSubmit={submitHandler}>
@@ -81,8 +80,7 @@ function Login() {
           <Link to="/register">Don't have an account ?</Link>
         </div>
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 

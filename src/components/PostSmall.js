@@ -19,7 +19,7 @@ function PostSmall(props) {
         );
         if (response.data.success) {
           console.log("successfully deleted");
-          window.location = "/all";
+          window.location = "/posts";
         } else {
           console.log("Failure to delete");
         }
@@ -27,7 +27,7 @@ function PostSmall(props) {
         console.log(err);
       }
     } else {
-      window.location = `/post/${props.post._id}/` + str;
+      window.location = `/posts/${props.post._id}/` + str;
     }
   }
 
@@ -48,7 +48,7 @@ function PostSmall(props) {
           <p className="mx-2"> - </p>
           <p className="text-slate-600">{props.post.date}</p>
         </div>
-        <Link to={`/post/${props.post._id}`}>
+        <Link to={`/posts/${props.post._id}`}>
           <div className="font-sans">
             <div className="mb-3 text-lg font-extrabold text-slate-800 leading-6">
               <h3>{props.post.title}</h3>

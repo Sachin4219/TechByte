@@ -55,8 +55,7 @@ function UpdatePost(props) {
     }
   };
   return (
-    <div className="w-[100%] h-auto min-h-screen flex flex-col items-center justify-center">
-      <Navbar />
+    <>
       <form
         className="w-[50%] py-10 flex flex-col justify-center items-center gap-8 border-2 border-gray-300 rounded-md outline-none"
         onSubmit={submitHandler}
@@ -136,8 +135,7 @@ function UpdatePost(props) {
           Update Post
         </button>
       </form>
-      <Footer />
-    </div>
+    </>
   );
 }
 

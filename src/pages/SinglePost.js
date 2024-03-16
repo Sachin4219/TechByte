@@ -7,13 +7,7 @@ import { useContext } from "react";
 
 function SinglePost() {
   let { id } = useParams();
-  return (
-    <div className="w-[100%] h-auto min-h-[100vh] flex flex-col items-center">
-      <Navbar />
-      <Post postid={id} />
-      <Footer />
-    </div>
-  );
+  return <Post postid={id} />;
 }
 
 export default SinglePost;

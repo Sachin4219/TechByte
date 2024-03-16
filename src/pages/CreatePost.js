@@ -52,89 +52,85 @@ function CreatePost(props) {
     }
   };
   return (
-    <div className="w-[100%] h-auto min-h-screen flex flex-col items-center justify-center">
-      <Navbar at={"newpost"} />
-      <form
-        className="w-[50%] py-10 flex flex-col justify-center items-center gap-8 border-2 border-gray-300 rounded-md outline-none"
-        onSubmit={submitHandler}
-      >
-        <div className="h-fit w-[80%]">
-          <label
-            className="text-left text-lg font-bold text-gray-600"
-            htmlFor="title"
-          >
-            Title
-          </label>
-          <input
-            className="focus:scale-95 text-xl w-[100%] h-[46px] px-3 py-2 border-2 border-gray-300 rounded-md outline-none focus:border-gray-400"
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="My First Post"
-          />
-        </div>
-        <div className="h-fit w-[80%]">
-          <label
-            className="text-left text-lg font-bold text-gray-600"
-            htmlFor="titleimage"
-          >
-            Title image
-          </label>
-          <input
-            className="focus:scale-95 text-xl w-[100%] h-[46px] px-3 py-2 border-2 border-gray-300 rounded-md outline-none focus:border-gray-400"
-            type="text"
-            id="titleimage"
-            value={titleimage}
-            onChange={(e) => setTitleimage(e.target.value)}
-            placeholder="https://randomimage.com/cats-in-the-cradle/1"
-          />
-        </div>
-        <div className="h-fit w-[80%]">
-          <label
-            className="text-left text-lg font-bold text-gray-600"
-            htmlFor="content"
-          >
-            Content
-          </label>
-          <input
-            className="focus:scale-95 text-xl w-[100%] h-[46px] px-3 py-2 border-2 border-gray-300 rounded-md outline-none focus:border-gray-400"
-            type="text"
-            id="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            placeholder="Lorem Ipsum dolor sit amet"
-          />
-        </div>
-        <div className="h-fit w-[80%]">
-          <label
-            className="text-left text-lg font-bold text-gray-600"
-            htmlFor="tags"
-          >
-            Tags
-          </label>
-          <input
-            className="focus:scale-95 text-xl w-[100%] h-[46px] px-3 py-2 border-2 border-gray-300 rounded-md outline-none focus:border-gray-400"
-            type="text"
-            id="title"
-            value={tags.split(",").at(-1)}
-            onChange={handleChangeTag}
-            placeholder="My First Post"
-          />
-          {/* <div className="text-xl w-[100%] h-[46px] px-3 py-2 border-2 border-gray-300 rounded-md outline-none focus:border-gray-400"></div> */}
-          <div className="mt-2">
-            <Tags tags={tagsArr} setTags={setTagsArr}></Tags>
-          </div>
-        </div>
-        <button
-          className="w-fit h-fit px-5 py-3 text-lg font-bold text-slate-50 rounded-md border-none outline-none bg-blue-600 hover:scale-95 active:scale-90"
-          type="submit"
+    <form
+      className="w-[50%] py-10 flex flex-col justify-center items-center gap-8 border-2 border-gray-300 rounded-md outline-none"
+      onSubmit={submitHandler}
+    >
+      <div className="h-fit w-[80%]">
+        <label
+          className="text-left text-lg font-bold text-gray-600"
+          htmlFor="title"
         >
-          Create Post
-        </button>
-      </form>
-      <Footer />
-    </div>
+          Title
+        </label>
+        <input
+          className="focus:scale-95 text-xl w-[100%] h-[46px] px-3 py-2 border-2 border-gray-300 rounded-md outline-none focus:border-gray-400"
+          type="text"
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="My First Post"
+        />
+      </div>
+      <div className="h-fit w-[80%]">
+        <label
+          className="text-left text-lg font-bold text-gray-600"
+          htmlFor="titleimage"
+        >
+          Title image
+        </label>
+        <input
+          className="focus:scale-95 text-xl w-[100%] h-[46px] px-3 py-2 border-2 border-gray-300 rounded-md outline-none focus:border-gray-400"
+          type="text"
+          id="titleimage"
+          value={titleimage}
+          onChange={(e) => setTitleimage(e.target.value)}
+          placeholder="https://randomimage.com/cats-in-the-cradle/1"
+        />
+      </div>
+      <div className="h-fit w-[80%]">
+        <label
+          className="text-left text-lg font-bold text-gray-600"
+          htmlFor="content"
+        >
+          Content
+        </label>
+        <input
+          className="focus:scale-95 text-xl w-[100%] h-[46px] px-3 py-2 border-2 border-gray-300 rounded-md outline-none focus:border-gray-400"
+          type="text"
+          id="content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Lorem Ipsum dolor sit amet"
+        />
+      </div>
+      <div className="h-fit w-[80%]">
+        <label
+          className="text-left text-lg font-bold text-gray-600"
+          htmlFor="tags"
+        >
+          Tags
+        </label>
+        <input
+          className="focus:scale-95 text-xl w-[100%] h-[46px] px-3 py-2 border-2 border-gray-300 rounded-md outline-none focus:border-gray-400"
+          type="text"
+          id="title"
+          value={tags.split(",").at(-1)}
+          onChange={handleChangeTag}
+          placeholder="My First Post"
+        />
+        {/* <div className="text-xl w-[100%] h-[46px] px-3 py-2 border-2 border-gray-300 rounded-md outline-none focus:border-gray-400"></div> */}
+        <div className="mt-2">
+          <Tags tags={tagsArr} setTags={setTagsArr}></Tags>
+        </div>
+      </div>
+      <button
+        className="w-fit h-fit px-5 py-3 text-lg font-bold text-slate-50 rounded-md border-none outline-none bg-blue-600 hover:scale-95 active:scale-90"
+        type="submit"
+      >
+        Create Post
+      </button>
+    </form>
   );
 }
 

@@ -42,8 +42,7 @@ function MyPosts() {
   }, []);
 
   return (
-    <div className="w-[100%] h-[auto] min-h-[100vh] font-sans flex flex-col items-center">
-      <Navbar at={"myposts"} />
+    <>
       <div className="w-[90%] flex px-3 py-2 items-center gap-10 bg-slate-50 rounded-md mb-5">
         <img src={photo} className="w-[100px] h-[100px] rounded-full" />
         <h1 className="text-3xl">Welcome {name}</h1>
@@ -54,8 +53,7 @@ function MyPosts() {
           return <PostSmall key={index} post={post} />;
         })}
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 

@@ -6,6 +6,7 @@ import { base_url } from "../assets/data";
 import axios from "axios";
 import { format } from "date-fns";
 import { ImSearch } from "react-icons/im";
+import { json } from "react-router";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
@@ -31,8 +32,7 @@ function AllPosts() {
   }, []);
 
   return (
-    <div className="w-[100%] h-[auto] min-h-[100vh]">
-      <Navbar at={"all"} />
+    <>
       <div className="w-full flex justify-center h-auto py-2 my-4 items-center">
         <div className="w-min-[250px] w-[50%] pl-5 border-1 h-auto rounded-l-full bg-blue-50">
           <input
@@ -58,9 +58,26 @@ function AllPosts() {
             return <PostSmall key={index} post={post} />;
           })}
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 
 export default AllPosts;
+
+export const loader = async () => {
+  try {
+    const resp = await axios.get(`${base_url}posts`);
+    if (resp.statusText != "OK")
+      return json({
+        error: 500,
+        message: "Could not fetch posts",
+      });
+    let p = resp.data.response;
+    p.map((post) => {
+      post.date = format(new Date(post.date), "dd/MM/yyyy");
+    });
+    return p;
+  } catch (err) {
+    return json({ error: 500, message: "Could not fetch posts" });
+  }
+};

@@ -5,12 +5,10 @@ import RecentPosts from "../components/RecentPosts";
 
 function Home() {
   return (
-    <div>
-      <Navbar at={"home"} />
+    <>
       <HomeHeader />
       <RecentPosts />
-      <Footer />
-    </div>
+    </>
   );
 }
 

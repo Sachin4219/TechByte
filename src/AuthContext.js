@@ -5,7 +5,7 @@ import axios from "axios";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState("hold");
+  const [isAuth, setIsAuth] = useState(false);
   const isAuthenticated = async () => {
     try {
       const token = localStorage.getItem("token");

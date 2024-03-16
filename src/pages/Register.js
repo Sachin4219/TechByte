@@ -52,7 +52,7 @@ function Register() {
         localStorage.setItem("email", response.data.response.email);
         setMessage("success");
         fireError();
-        window.location = "/all";
+        window.location = "/posts";
       } else {
         setMessage(response.data.msg);
         fireError();
@@ -87,8 +87,7 @@ function Register() {
   };
 
   return (
-    <div className={styles.body}>
-      <Navbar />
+    <>
       <div className={styles.message} id="messages">
         {message === "success" ? (
           <div className={styles.successMessage}>Registered Successfully</div>
@@ -98,7 +97,7 @@ function Register() {
       </div>
       <div className={styles.heading}>
         <img src={transparent} alt="website logo"></img>
-        <h1>Register on Everypost</h1>
+        <h1>Register on TechByte</h1>
       </div>
       <div className={styles.container}>
         <form className={styles.form} onSubmit={submitHandler}>
@@ -186,8 +185,7 @@ function Register() {
           <Link to="/login">Already have an account ?</Link>
         </div>
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 
