@@ -29,7 +29,7 @@ async function send() {
     console.log("Push registered!");
 
     // send push notifications
-    const resp = await fetch("http://localhost:4000/subscribe", {
+    const resp = await fetch("https://techbytebackend.onrender.com/subscribe", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
