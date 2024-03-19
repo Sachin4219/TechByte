@@ -4,8 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { base_url } from "../assets/data";
 import { useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import { AuthContext } from "../AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -28,7 +27,6 @@ function Login() {
         password,
       });
       if (response.data.success) {
-        document.cookie = `token=${response.data.response.token}`;
         localStorage.setItem("token", response.data.response.token);
         localStorage.setItem("photo", response.data.response.photo);
         localStorage.setItem("name", response.data.response.name);

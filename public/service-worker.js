@@ -1,18 +1,18 @@
 const cacheName = "v1";
 
 self.addEventListener("install", (e) => {
-  console.log("start the invasion");
+  // console.log("start the invasion");
 });
 
 self.addEventListener("activate", (e) => {
-  console.log("invasion started");
+  // console.log("invasion started");
 
   e.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cache) => {
           if (cache !== cacheName) {
-            console.log("service worker: clearing old cache!");
+            // console.log("service worker: clearing old cache!");
             return caches.delete(cache);
           }
         })
@@ -21,20 +21,22 @@ self.addEventListener("activate", (e) => {
   );
 });
 
-async function cacheThenNetwork(request) {
-  const cachedResponse = await caches.match(request);
-  if (cachedResponse) {
-    console.log("Found response in cache:", cachedResponse);
-    return cachedResponse;
-  }
-  console.log("Falling back to network");
-  return fetch(request);
-}
+// async function cacheThenNetwork(request) {
+//   try{
+//   const res = await fetch(request);
+//   }
+//   const cachedResponse = await caches.match(request);
+//   if (cachedResponse) {
+//     // console.log("Found response in cache:", cachedResponse);
+//     return cachedResponse;
+//   }
+//   console.log("Falling back to network");
+// }
 
-self.addEventListener("fetch", (event) => {
-  console.log(`Handling fetch event for ${event.request.url}`);
-  event.respondWith(cacheThenNetwork(event.request));
-});
+// self.addEventListener("fetch", (event) => {
+//   // console.log(`Handling fetch event for ${event.request.url}`);
+//   event.respondWith(cacheThenNetwork(event.request));
+// });
 
 // self.addEventListener("fetch", (e) => {
 //   console.log("service worker fetching");
@@ -87,7 +89,7 @@ self.addEventListener("notificationclick", function (event) {
 
   event.notification.close();
 
-  event.waitUntil(clients.openWindow("https://developers.google.com/web/"));
+  event.waitUntil(clients.openWindow("https://tech-byte.vercel.app"));
 });
 
 self.addEventListener("pushsubscriptionchange", function (event) {

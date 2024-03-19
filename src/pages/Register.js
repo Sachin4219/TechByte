@@ -46,7 +46,7 @@ function Register() {
         password,
       });
       if (response.data.success) {
-        document.cookie = `token=${response.data.response.token}`;
+        console.log(response.data);
         localStorage.setItem("token", response.data.response.token);
         localStorage.setItem("photo", response.data.response.photo);
         localStorage.setItem("name", response.data.response.name);
