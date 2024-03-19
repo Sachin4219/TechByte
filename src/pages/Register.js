@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import profile from "../assets/profile.png";
 import { MdModeEdit } from "react-icons/md";
 import { ImCross } from "react-icons/im";
+import Compressor from "compressorjs";
 
 function Register() {
   const [name, setName] = useState("");
@@ -80,10 +81,31 @@ function Register() {
     });
   };
 
+  const compressImage = (compressedImage) => {
+    const base64 = convertToBase64(compressedImage);
+    console.log(base64);
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      console.log(reader.result);
+      setPostImage(reader.result);
+    });
+    reader.readAsDataURL(compressedImage);
+    // setPostImage(base64);
+    // return file;
+  };
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
-    const base64 = await convertToBase64(file);
-    setPostImage(base64);
+    if (!file) return;
+    try {
+      new Compressor(file, {
+        quality: 0.6,
+        success(result) {
+          compressImage(result);
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

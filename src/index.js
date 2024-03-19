@@ -7,11 +7,11 @@ import Loader from "./components/Loader";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <React.StrictMode>
-    <AuthProvider>
-      <Suspense fallback={<Loader />}>
-        <App />
-      </Suspense>
-    </AuthProvider>
-  </React.StrictMode>
+  <AuthProvider>
+    <Suspense fallback={<Loader />}>
+      <App />
+    </Suspense>
+  </AuthProvider>
 );
+
+// ServiceWorkerRegistration.register();
