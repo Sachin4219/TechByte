@@ -1,6 +1,38 @@
 let public_key =
   "BKRns56lTgiccLbI4tVnvoBrzAeKhbDcZzVSR1Kexd2yVZS3mal9_lPL6Ec8nsYL64acQHgsZbyuC5WZsiTZDic";
 
+const base_url = "http://localhost:4000/";
+// const base_url = "https://techbytebackend.onrender.com/";
+let subscription = localStorage.getItem("subscription")
+  ? JSON.parse(localStorage.getItem("subscription"))
+  : "";
+let register = localStorage.getItem("register")
+  ? JSON.parse(localStorage.getItem("register"))
+  : "";
+
+if (!localStorage.getItem("notificationSubscription")) {
+  Notification.requestPermission().then((perm) => {
+    if (perm === "granted") {
+      console.log("hello");
+      const n = new Notification("example notification", {
+        body: `Testing your Notification feature`,
+        data: {
+          type: "test",
+          message: "whats up silly user",
+        },
+        icon: "./logo192.png",
+        badge: "./logo128.png",
+        tag: "test",
+      });
+      setTimeout(() => {
+        n.close();
+      }, 2000);
+    } else {
+      alert("Grant notifications!");
+    }
+  });
+}
+
 function urlBase64ToUint8Array(base64String) {
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)
@@ -18,18 +50,18 @@ function urlBase64ToUint8Array(base64String) {
 
 async function send() {
   console.log("Registering service worker");
-  const register = await navigator.serviceWorker.register("service-worker.js");
+  register = await navigator.serviceWorker.register("service-worker.js");
+  // localStorage.setItem("register", register);
 
   try {
-    const subscription = await register.pushManager.subscribe({
+    subscription = await register.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey: public_key,
     });
     console.log(subscription);
     console.log("Push registered!");
-
     // send push notifications
-    const resp = await fetch("https://techbytebackend.onrender.com/subscribe", {
+    const resp = await fetch(`${base_url}subscribe`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,21 +76,12 @@ async function send() {
 }
 
 if ("serviceWorker" in navigator) {
+  // if (!localStorage.getItem("notificationSubscription"))
   send().catch((err) => console.log(err));
 }
 
 const pushBtn = document.querySelector("#push-btn");
 
 pushBtn.addEventListener("click", () => {
-  Notification.requestPermission().then((perm) => {
-    if (perm === "granted") {
-      console.log("hello");
-      new Notification("example notification", {
-        body: "this is testing notification",
-        data: { hello: "whats up silly user" },
-      });
-    } else {
-      alert("notifcation not granted");
-    }
-  });
+  console.log("hello");
 });

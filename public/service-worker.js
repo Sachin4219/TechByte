@@ -21,37 +21,21 @@ self.addEventListener("activate", (e) => {
   );
 });
 
-// async function cacheThenNetwork(request) {
-//   try{
-//   const res = await fetch(request);
-//   }
-//   const cachedResponse = await caches.match(request);
-//   if (cachedResponse) {
-//     // console.log("Found response in cache:", cachedResponse);
-//     return cachedResponse;
-//   }
-//   console.log("Falling back to network");
-// }
-
-// self.addEventListener("fetch", (event) => {
-//   // console.log(`Handling fetch event for ${event.request.url}`);
-//   event.respondWith(cacheThenNetwork(event.request));
-// });
-
-// self.addEventListener("fetch", (e) => {
-//   console.log("service worker fetching");
-
-//   e.respondWith(
-//     fetch(e.request)
-//       .then((res) => {
-//         caches.open(cacheName).then((cache) => {
-//           cache.put(e.request, res.clone());
-//         });
-//         return res;
-//       })
-//       .catch(() => caches.match(e.request).then((res) => res))
-//   );
-// });
+self.addEventListener("fetch", function (event) {
+  event.respondWith(
+    caches.open(cacheName).then(async function (cache) {
+      return cache.match(event.request).then(function (response) {
+        return (
+          response ||
+          fetch(event.request).then(function (response) {
+            cache.put(event.request, response.clone());
+            return response;
+          })
+        );
+      });
+    })
+  );
+});
 
 const applicationServerPublicKey =
   "BKRns56lTgiccLbI4tVnvoBrzAeKhbDcZzVSR1Kexd2yVZS3mal9_lPL6Ec8nsYL64acQHgsZbyuC5WZsiTZDic";
@@ -79,6 +63,10 @@ self.addEventListener("push", function (event) {
   const title = push.title;
   const options = {
     body: push.body,
+    data: push,
+    icon: "./logo192.png",
+    badge: "./logo128.png",
+    tag: "push",
   };
 
   event.waitUntil(self.registration.showNotification(title, options));
