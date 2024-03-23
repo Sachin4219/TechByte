@@ -77,7 +77,7 @@ self.addEventListener("notificationclick", function (event) {
 
   event.notification.close();
 
-  event.waitUntil(clients.openWindow("https://tech-byte.vercel.app"));
+  event.waitUntil(clients.openWindow("https://tech-byte.vercel.app/posts"));
 });
 
 self.addEventListener("pushsubscriptionchange", function (event) {

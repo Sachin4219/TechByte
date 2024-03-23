@@ -1,8 +1,8 @@
 let public_key =
   "BKRns56lTgiccLbI4tVnvoBrzAeKhbDcZzVSR1Kexd2yVZS3mal9_lPL6Ec8nsYL64acQHgsZbyuC5WZsiTZDic";
 
-const base_url = "http://localhost:4000/";
-// const base_url = "https://techbytebackend.onrender.com/";
+// const base_url = "http://localhost:4000/";
+const base_url = "https://techbytebackend.onrender.com/";
 let subscription = localStorage.getItem("subscription")
   ? JSON.parse(localStorage.getItem("subscription"))
   : "";
