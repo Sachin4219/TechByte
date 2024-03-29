@@ -42,5 +42,17 @@
   ],
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "shortcuts":[
+    {
+      "name": "Home Page",
+      "url": "/",
+      "description": "Lists 5 Recent posts"
+    },
+    {
+      "name": "Create New Post",
+      "url": "/posts/new",
+      "short_name":"Create"
+    }
+  ]
 }
