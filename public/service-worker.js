@@ -1,12 +1,13 @@
 const cacheName = "v1";
 
 self.addEventListener("install", (e) => {
-  // console.log("start the invasion");
+  console.log("start the invasion");
+  self.skipWaiting();
 });
 
 self.addEventListener("activate", (e) => {
-  // console.log("invasion started");
-
+  console.log("invasion started");
+  e.waitUntil(clients.claim());
   e.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
@@ -28,7 +29,11 @@ self.addEventListener("fetch", function (event) {
         return (
           response ||
           fetch(event.request).then(function (response) {
-            cache.put(event.request, response.clone());
+            if (
+              event.request.url !==
+              "https://techbytebackend.onrender.com/check_login/"
+            )
+              cache.put(event.request, response.clone());
             return response;
           })
         );
@@ -57,7 +62,7 @@ function urlB64ToUint8Array(base64String) {
 }
 
 self.addEventListener("push", function (event) {
-  console.log(event);
+  // console.log(event);
   console.log("[Service Worker] Push Received.");
   const push = JSON.parse(event.data.text());
   const title = push.title;

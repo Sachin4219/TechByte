@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
         },
       };
       const response = await axios.get(base_url + "check_login/", config);
+      // console.log(response);
       if (response.data.success) {
         setIsAuth(true);
       } else {

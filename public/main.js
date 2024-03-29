@@ -3,17 +3,17 @@ let public_key =
 
 // const base_url = "http://localhost:4000/";
 const base_url = "https://techbytebackend.onrender.com/";
-let subscription = localStorage.getItem("subscription")
-  ? JSON.parse(localStorage.getItem("subscription"))
-  : "";
-let register = localStorage.getItem("register")
-  ? JSON.parse(localStorage.getItem("register"))
-  : "";
+// let subscription = localStorage.getItem("subscription")
+//   ? JSON.parse(localStorage.getItem("subscription"))
+//   : "";
+// let register = localStorage.getItem("register")
+//   ? JSON.parse(localStorage.getItem("register"))
+//   : "";
 
-if (!localStorage.getItem("notificationSubscription")) {
+if (Notification.permission !== "granted") {
   Notification.requestPermission().then((perm) => {
     if (perm === "granted") {
-      console.log("hello");
+      // console.log("hello");
       const n = new Notification("example notification", {
         body: `Testing your Notification feature`,
         data: {
@@ -58,7 +58,7 @@ async function send() {
       userVisibleOnly: true,
       applicationServerKey: public_key,
     });
-    console.log(subscription);
+    // console.log(subscription);
     console.log("Push registered!");
     // send push notifications
     const resp = await fetch(`${base_url}subscribe`, {
@@ -76,12 +76,13 @@ async function send() {
 }
 
 if ("serviceWorker" in navigator) {
-  // if (!localStorage.getItem("notificationSubscription"))
-  send().catch((err) => console.log(err));
+  if (!navigator.serviceWorker.controller)
+    send().catch((err) => console.log(err));
 }
 
-const pushBtn = document.querySelector("#push-btn");
+// const pushBtn = document.querySelector("#push-btn");
 
-pushBtn.addEventListener("click", () => {
-  console.log("hello");
-});
+// pushBtn.addEventListener("click", () => {
+// console.log("hello");
+// });
+//

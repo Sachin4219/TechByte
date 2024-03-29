@@ -48,6 +48,20 @@ function Post(props) {
     }
   }
 
+  const shareHandler = async () => {
+    try {
+      await navigator.share({
+        title: "Post from techbyte",
+        text: "I am lord",
+        url: `${window.location.href}`,
+      });
+      alert("shared successfully");
+      console.log("MDN shared successfully");
+    } catch (err) {
+      console.log(`Error: ${err}`);
+    }
+  };
+
   return (
     <>
       <div className="w-[100%] pt-16 flex justify-center">
@@ -74,7 +88,10 @@ function Post(props) {
             </div>
           </div>
           <div className="w-[20%] max-[1000px]:mt-16 max-[1000px]:w-[100%]">
-            <div className="flex items-center justify-between text-2xl">
+            <div
+              className="flex items-center justify-between text-2xl"
+              onClick={() => shareHandler()}
+            >
               <AiFillInstagram className="text-rose-600" />
               <AiFillFacebook className="text-blue-500" />
               <AiOutlineTwitter className="text-sky-500" />
@@ -122,7 +139,7 @@ export default Post;
 export const loader = async ({ params }) => {
   try {
     const resp = await axios.get(`${base_url}post/${params.id}`);
-    if (resp.statusText != "OK")
+    if (resp.status > 399)
       return json({
         error: 404,
         message: "Could not fetch the requested post",
@@ -131,6 +148,7 @@ export const loader = async ({ params }) => {
     p.date = format(new Date(p.date), "dd/MM/yyyy");
     return p;
   } catch (err) {
-    return json({ error: 404, message: "Could not fetch the requested post" });
+    console.log(err);
+    return json({ something: "die", error: err, message: err });
   }
 };
