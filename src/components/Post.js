@@ -111,7 +111,8 @@ function Post(props) {
                   );
                 })}
             </div>
-            {localStorage.getItem("name") === postDetails._author.name && (
+            {(localStorage.getItem("name") === postDetails._author.username ||
+              localStorage.getItem("name") === postDetails._author.name) && (
               <div className="pt-8 flex flex-row gap-5 items-center">
                 <button
                   onClick={() => checkAndGo("update")}
@@ -145,6 +146,7 @@ export const loader = async ({ params }) => {
         message: "Could not fetch the requested post",
       });
     let p = resp.data.response;
+    console.log(p);
     p.date = format(new Date(p.date), "dd/MM/yyyy");
     return p;
   } catch (err) {

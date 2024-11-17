@@ -15,8 +15,16 @@ function UpdatePost(props) {
   const [tags, setTags] = useState("");
   const [tagsArr, setTagsArr] = useState([]);
 
-  const { isAuth } = useContext(AuthContext);
-  if (isAuth === false) window.location.replace("/login");
+  const { isAuth, loading } = useContext(AuthContext);
+
+  // useEffect that runs only after loading is complete
+  useEffect(() => {
+    if (!loading && isAuth === false) {
+      window.location.replace("/login");
+    }
+  }, [loading, isAuth]);
+
+  console.log(isAuth);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -54,6 +62,11 @@ function UpdatePost(props) {
       setTags(val);
     }
   };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
       <form
