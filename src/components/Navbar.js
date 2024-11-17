@@ -12,7 +12,7 @@ import { AuthContext } from "../AuthContext";
 
 function Navbar(props) {
   const [isopen, setIsopen] = useState(false);
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, logout } = useContext(AuthContext);
 
   const name = localStorage.getItem("name");
   const photo = localStorage.getItem("photo");
@@ -99,9 +99,8 @@ function Navbar(props) {
               <p className="text-md text-slate-700 mr-6">{name}</p>
             </NavLink>
             <NavLink
-              href="/"
               className="hover:bg-sky-100 rounded-t-md px-2 hover:scale-95 active:scale-90"
-              onClick={() => localStorage.clear()}
+              onClick={() => logout()}
             >
               Logout
             </NavLink>
@@ -180,9 +179,11 @@ function Navbar(props) {
                 <p className="text-md text-slate-700">{name}</p>
               </NavLink>
               <NavLink
-                href="/"
                 className="hover:bg-sky-100 rounded-t-md px-2 hover:scale-95 active:scale-90"
-                onClick={() => localStorage.clear()}
+                onClick={() => {
+                  localStorage.clear();
+                  window.loc = "/";
+                }}
               >
                 Logout
               </NavLink>

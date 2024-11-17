@@ -6,7 +6,7 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(false);
-  const [loading, setLoading] = useState(true); // Added loading state
+  const [loading, setLoading] = useState(true);
 
   const isAuthenticated = async () => {
     try {
@@ -24,16 +24,19 @@ const AuthProvider = ({ children }) => {
       };
       const response = await axios.get(`${base_url}check_login/`, config);
 
-      if (response.data.success) {
-        setIsAuth(true);
-      } else {
-        setIsAuth(false);
-      }
+      setIsAuth(response.data.success);
     } catch (error) {
       setIsAuth(false);
     } finally {
-      setLoading(false); // Set loading to false after the check
+      setLoading(false);
     }
+  };
+
+  // Function to handle logout
+  const logout = () => {
+    localStorage.clear();
+    setIsAuth(false);
+    window.location.reload(); // Refresh the page to reset the state
   };
 
   useEffect(() => {
@@ -41,7 +44,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuth, loading }}>
+    <AuthContext.Provider value={{ isAuth, loading, logout }}>
       {children}
     </AuthContext.Provider>
   );
